@@ -14,7 +14,7 @@ main(void)
     sigemptyset(&act.sa_mask);
     act.sa_flags = SA_SIGINFO;
     if (sigaction(SIGCLD, &act, &oact) < 0)
-        return(SIG_ERR);
+        err_sys("sigaction error");
 
     if ((pid = fork()) < 0)
         err_sys("fork error");
@@ -50,6 +50,6 @@ handler(int signo, siginfo_t *info, void *context) {
     if (code == CLD_KILLED || code == CLD_DUMPED)
         printf("abnormal termination, signal number = %d%s\n", status,
                 code == CLD_DUMPED ? " (core file generated)" : "");
-    else
+    else if (code == CLD_EXITED)
         printf("normal termination, exit status = %d\n", status);
 }
