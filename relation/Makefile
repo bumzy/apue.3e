@@ -2,7 +2,7 @@ ROOT=..
 PLATFORM=$(shell $(ROOT)/systype.sh)
 include $(ROOT)/Make.defines.$(PLATFORM)
 
-PROGS =	orphan3
+PROGS =	orphan3 exercise0902
 
 all:	$(PROGS)
 
