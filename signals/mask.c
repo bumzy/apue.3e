@@ -12,7 +12,7 @@ main(void)
 {
 	if (signal(SIGUSR1, sig_usr1) == SIG_ERR)
 		err_sys("signal(SIGUSR1) error");
-	if (signal(SIGALRM, sig_alrm) == SIG_ERR)
+	if (signal(SIGALRM, sltig_alrm) == SIG_ERR)
 		err_sys("signal(SIGALRM) error");
 
 	pr_mask("starting main: ");		/* {Prog prmask} */
